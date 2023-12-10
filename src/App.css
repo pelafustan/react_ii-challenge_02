@@ -1,0 +1,38 @@
+#root {
+  width: 95%;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.main-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+}
+
+.icon-heart:hover {
+  cursor: pointer;
+  overflow: visible;
+}
+
+.icon-heart:hover path {
+  transform-origin: center;
+  animation: stroke-animation 1s ease-in-out forwards;
+}
+
+@keyframes stroke-animation {
+  25% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  75% {
+    transform: scale(1);
+  }
+}
