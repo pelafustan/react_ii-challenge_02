@@ -2,7 +2,26 @@ import { Card, Image, List, Typography } from "antd";
 import { Photos } from "../App";
 import IconHeart from "./IconHeart";
 
-export default function Gallery({ data, loading }: { data: Photos[]; loading?: boolean; }) {
+type GalleryProps = {
+  data: Photos[];
+  setData: React.Dispatch<React.SetStateAction<Photos[]>>;
+  loading?: boolean;
+}
+
+export default function Gallery({ data, setData, loading }: GalleryProps) {
+
+  const handleClick = (event: any) => {
+    const id: number = parseInt(event.target.parentElement.parentElement.dataset.id);
+    let photos = data.map((photo) => {
+      if (photo.id === id) {
+        return (
+          { ...photo, liked: !photo.liked }
+        );
+      }
+      return { ...photo };
+    })
+    setData(photos);
+  };
 
   return (
     <>
@@ -30,6 +49,7 @@ export default function Gallery({ data, loading }: { data: Photos[]; loading?: b
                   style={{
                     position: "relative",
                   }}
+                  data-id={item.id}
                 >
                   <Image
                     alt={item.alt}
@@ -38,6 +58,7 @@ export default function Gallery({ data, loading }: { data: Photos[]; loading?: b
                     preview={{ src: item.src.original }}
                   />
                   <IconHeart
+                    onClick={handleClick}
                     filled={item.liked}
                     style={{
                       position: "absolute",
