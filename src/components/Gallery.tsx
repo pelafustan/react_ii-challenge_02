@@ -5,10 +5,10 @@ import IconHeart from "./IconHeart";
 type GalleryProps = {
   data: Photos[];
   setData: React.Dispatch<React.SetStateAction<Photos[]>>;
-  loading?: boolean;
+  isFav?: boolean;
 }
 
-export default function Gallery({ data, setData, loading }: GalleryProps) {
+export default function Gallery({ data, setData, isFav }: GalleryProps) {
 
   const handleClick = (event: any) => {
     const id: number = parseInt(event.target.parentElement.parentElement.dataset.id);
@@ -37,7 +37,6 @@ export default function Gallery({ data, setData, loading }: GalleryProps) {
         }}
         style={{ marginTop: "0.85rem" }}
         dataSource={data}
-        loading={loading}
         renderItem={(item) => (
           <List.Item key={item.id}>
             <Card
@@ -57,15 +56,18 @@ export default function Gallery({ data, setData, loading }: GalleryProps) {
                     width={"100%"}
                     preview={{ src: item.src.original }}
                   />
-                  <IconHeart
-                    onClick={handleClick}
-                    filled={item.liked}
-                    style={{
-                      position: "absolute",
-                      top: "3%",
-                      left: "78%",
-                    }}
-                  />
+                  {!isFav
+                    ? <IconHeart
+                      onClick={handleClick}
+                      filled={item.liked}
+                      style={{
+                        position: "absolute",
+                        top: "3%",
+                        left: "78%",
+                      }}
+                    />
+                    : null
+                  }
                   <Typography.Text
                     strong
                     style={{
