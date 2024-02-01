@@ -1,7 +1,7 @@
 type IconProps = {
   filled: boolean;
   style?: React.CSSProperties;
-  onClick?: (event?: any) => void;
+  onClick?: (event: React.MouseEvent<SVGSVGElement>) => void;
 }
 
 const IconHeart = ({ filled, style, onClick }: IconProps) => {
