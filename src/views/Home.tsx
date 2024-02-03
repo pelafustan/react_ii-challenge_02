@@ -5,13 +5,11 @@ export default function Home() {
   const { photos, setPhotos } = usePhotos();
   return (
     <>
-      <div className="main-view">
-        <Gallery
-          key="home"
-          data={photos}
-          setData={setPhotos}
-        />
-      </div>
+      <Gallery
+        key="home"
+        data={photos}
+        setData={setPhotos}
+      />
     </>
   );
 }
