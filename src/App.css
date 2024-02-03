@@ -7,12 +7,8 @@
   box-sizing: border-box;
 }
 
-.main-view {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-self: center;
-  align-self: center;
+.not-liked {
+  display: none;
 }
 
 .icon-heart:hover {
