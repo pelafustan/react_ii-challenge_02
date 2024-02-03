@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import { Photos } from "../App";
+import { Photos } from "../utils/types";
 
 type PhotosContext = {
   photos: Photos[];
